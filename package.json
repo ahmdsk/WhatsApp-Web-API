@@ -1,0 +1,30 @@
+{
+  "name": "wa-web-api",
+  "version": "1.0.0",
+  "description": "WhatsApp Web Api",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wa-web",
+    "node.js",
+    "wa-api"
+  ],
+  "author": "Ahmad Shaleh Kurniawan",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "qrcode": "^1.5.1",
+    "qrcode-terminal": "^0.12.0",
+    "socket.io": "^4.5.4",
+    "whatsapp-web.js": "^1.18.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

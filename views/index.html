@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp API</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <style>
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-3">
+        <h3>WhatsApp API</h3>
+        <hr>
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <img src="" id="qrcode">
+            </div>
+            <div class="col-md-6">
+                <div class="card mt-2" style="width: 25rem;">
+                    <div class="card-header">
+                      Logs
+                    </div>
+                    <ul class="list-group list-group-flush logs"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js" integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    <script>
+        let socket = io();
+        
+        $(document).ready(() => {
+            socket.on('qr', (src) => {
+                $('#qrcode').attr('src', src);
+            });
+
+            socket.on('message', (msg) => {
+                $('.logs').prepend($('<li class="list-group-item">An item</li>').text(msg));
+            });
+
+            socket.on('ready', (data) => {
+                $('#qrcode').hide();
+            });
+
+            socket.on('authenticated', (data) => {
+                $('#qrcode').hide();
+            });
+        });
+    </script>
+</body>
+</html>
