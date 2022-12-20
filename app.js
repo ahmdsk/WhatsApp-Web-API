@@ -40,6 +40,7 @@ io.on('connection', (socket) => {
     client.on('ready', () => {
         socket.emit('ready', 'WhatsApp siap!');
         socket.emit('message', 'WhatsApp siap!');
+        console.log('WhatsApp Ready');
     });
     
     client.on('authenticated', () => {
@@ -57,6 +58,34 @@ io.on('connection', (socket) => {
         client.initialize();
     });
 });
+
+client.on('message', msg => {
+    if (msg.body == '!ping') {
+        msg.reply('pong');
+    }
+});
+
+client.on('message', async msg => {
+    if(msg.body == '/sticker') {
+        const clientId = await (await msg.getChat()).id._serialized;
+
+        if(msg.hasMedia) {
+            const media = await msg.downloadMedia();
+
+            if (media) {
+                msg.reply(media, clientId, {
+                    sendMediaAsSticker: true,
+                    stickerName: 'HaloBot Sticker',
+                    stickerAuthor: 'HaloBot',
+                })
+            } else {
+                msg.reply('Gagal Mengunduh Gambar...');
+            }
+        } else {
+            msg.reply('Pilih Gambar mu boss...');
+        }
+    }
+})
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/views/index.html'));
