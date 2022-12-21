@@ -15,14 +15,17 @@
   "author": "Ahmad Shaleh Kurniawan",
   "license": "ISC",
   "dependencies": {
+    "@iamtraction/google-translate": "^2.0.1",
     "body-parser": "^1.20.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
     "qrcode": "^1.5.1",
     "qrcode-terminal": "^0.12.0",
+    "request": "^2.88.2",
     "socket.io": "^4.5.4",
-    "whatsapp-web.js": "^1.18.4"
+    "whatsapp-web.js": "^1.18.4",
+    "ytdl-core": "^4.11.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
