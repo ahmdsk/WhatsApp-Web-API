@@ -25,7 +25,6 @@
     "request": "^2.88.2",
     "socket.io": "^4.5.4",
     "whatsapp-web.js": "^1.18.4",
-    "ytdl-core": "^4.11.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
