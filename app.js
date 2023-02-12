@@ -2,7 +2,6 @@ const { Client, LocalAuth, MessageMedia } = require("whatsapp-web.js");
 const qrcode = require("qrcode");
 const request = require("request");
 const translate = require('@iamtraction/google-translate');
-const ytdl = require('ytdl-core');
 const fs = require('fs');
 
 const express = require("express");
